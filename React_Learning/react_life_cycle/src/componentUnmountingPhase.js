@@ -39,7 +39,23 @@ class ComponentUnmout extends Component {
 }
 
 class Child extends Component {
+  constructor() {
+    super();
+    this.state = {
+      seconds: 0,
+    };
+    this.timer = null; // Initialize the timer
+  }
+
+  // When the component mounts, start the timer
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.setState({ seconds: this.state.seconds + 1 });
+    }, 1000); // Update every 1 second (1000 milliseconds)
+  }
+
   componentWillUnmount() {
+    clearInterval(this.timer);
     alert("The component named Child is about to be unmounted.");
   }
 
