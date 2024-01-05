@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Navbar from "./component/Navbar/Navbar";
 
 /*
     This phase occurs when a component's props or state changes, and the component needs to be 
@@ -32,7 +33,7 @@ import React, { Component } from "react";
     third parameter to the componentDidUpdate() method.
 */
 
-class Header extends Component {
+class ComponentUpdateLifeCycle extends Component {
   constructor(props) {
     super(props);
     this.state = { favoriteFood: "rice" };
@@ -77,6 +78,70 @@ class Header extends Component {
   render() {
     return (
       <div>
+        <Navbar />
+        <div className="header-extra-margin">
+          <b>
+            This phase occurs when a component's props or state changes, and the
+            component needs to be updated in the DOM.
+          </b>
+        </div>
+        <div>
+          <b>shouldComponentUpdate():</b> The shouldComponentUpdate() method is
+          called before a component is updated. It takes two arguments:
+          nextProps and nextState. This method returns a boolean value that
+          determines whether the component should update or not. If this method
+          returns true, the component will update, and if it returns false, the
+          component will not update.
+        </div>
+        <div>
+          <p>
+            <b>componentWillUpdate():</b>{" "}
+          </p>
+          <p>
+            is a lifecycle method in React that gets called just before a
+            component's update cycle starts. It receives the next prop and state
+            as arguments and allows you to perform any necessary actions before
+            the component updates.
+          </p>
+          <p>
+            But this method is not recommended for updating the state, as it can
+            cause an infinite loop of rendering. It is primarily used for tasks
+            such as making API calls, updating the DOM, or preparing the
+            component to receive new data. componentWillUpdate() is often used
+            in conjunction with componentDidUpdate() to handle component
+            updates.
+          </p>
+        </div>
+        <div>
+          <p>
+            <b> componentDidUpdate():</b>
+          </p>
+          <p>
+            The componentDidUpdate() method is a lifecycle method in React that
+            is called after a component has been updated and re-rendered. It is
+            useful for performing side effects or additional operations when the
+            component's props or state have changed.
+          </p>
+          <p>
+            It's important to include a conditional check inside
+            componentDidUpdate() to prevent infinite loops. If you want to
+            update the state based on a prop change, make sure to compare the
+            previous prop (prevProps) with the current prop (this.props) before
+            updating the state.
+          </p>
+        </div>
+        <div>
+          <p>
+            <b>getSnapshotBeforeUpdate():</b>
+          </p>
+          <p>
+            This method is called just before the component's UI is updated. It
+            allows the component to capture some information about the current
+            state of the UI, such as the scroll position before it changes. This
+            method returns a value that is passed as the third parameter to the
+            componentDidUpdate() method.
+          </p>
+        </div>
         <h1>My Favorite Food is {this.state.favoriteFood}</h1>
         <div id="div1"></div>
         <div id="div2"></div>
@@ -88,4 +153,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default ComponentUpdateLifeCycle;

@@ -62,8 +62,57 @@ class Counter extends Component {
 
   render() {
     return (
-      <div>
+      <div className="header-extra-margin">
         <h1>My Favorite Food is {this.state.favoritefood} Mounte phase</h1>
+        <div>
+          <b>Mounting Phase</b>
+          <ol>
+            <li>
+              <b>constructor():</b> The constructor() method is called when the
+              component is first created. You use it to initialize the
+              component's state and bind methods to the component's instance.{" "}
+            </li>
+            <li>
+              <b>render():</b>The render() method is responsible for generating
+              the component's virtual DOM representation based on its current
+              props and state. It is called every time the component needs to be
+              re-rendered, either because its props or state have changed, or
+              because a parent component has been re-rendered.
+            </li>
+            <li>
+              <b>getDerivedStateFromProps():</b>
+              <p>
+                It is invoked during the mounting and updating phase of a
+                component. During the mounting phase, getDerivedStateFromProps()
+                is called after the constructor and before render(). This method
+                is called for every render cycle and provides an opportunity to
+                update the component's state based on changes in props before
+                the initial render.
+              </p>
+              <p>
+                {" "}
+                The method should return an object that represents the updated
+                state of the component, or null if no state update is necessary.
+              </p>
+              <p>
+                It's important to note that getDerivedStateFromProps() is a
+                static method, which means it does not have access to the this
+                keyword and cannot interact with the component's instance
+                methods or properties.
+              </p>
+            </li>
+            <li>
+              <b>componentDidMount()</b>
+              <p>
+                This method is called once the component has been mounted into
+                the DOM. It is typically used to set up any necessary event
+                listeners or timers, perform any necessary API calls or data
+                fetching, and perform other initialization tasks that require
+                access to the browser's DOM API.
+              </p>
+            </li>
+          </ol>
+        </div>
         <p>Count: {this.state.count}</p>
         <button onClick={this.handleClick}>Increment</button>
       </div>

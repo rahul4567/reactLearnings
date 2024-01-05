@@ -14,6 +14,7 @@ and props are destroyed.
 */
 
 import React, { Component } from "react";
+import Navbar from "./component/Navbar/Navbar";
 
 class ComponentUnmout extends Component {
   state = {
@@ -29,6 +30,7 @@ class ComponentUnmout extends Component {
 
     return (
       <div>
+        <Navbar />
         {showChild && <Child />}
         <button type="button" onClick={this.handleDelete}>
           Delete Header
@@ -60,7 +62,7 @@ class Child extends Component {
   }
 
   render() {
-    return <h1>Hello World!</h1>;
+    return <h1 className="header-extra-margin">Hello World!</h1>;
   }
 }
 
